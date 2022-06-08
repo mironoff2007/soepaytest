@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.soepaytest.pojos.enums.TranType
 import com.example.soepaytest.databinding.ActivityMainBinding
+import com.google.gson.Gson
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -61,13 +62,13 @@ class MainActivity : AppCompatActivity() {
         val transactionRequest = TransactionRequest(
             messageId = UUID.randomUUID().toString(),
             tranType = TranType.SALE.name,
-            requestAmount = BigDecimal(20.00),
-            preferredInstrument = PreferredInstrument.CARD,
+            requestAmount = java.math.BigDecimal(20.0),
+            preferredInstrument = PreferredInstrument.CARD
         )
 
         Intent("com.spectratech.soepay.action.payment")
             .apply {
-                    putExtra("ECR_TRANSACTION_REQUEST", transactionRequest)
+                    putExtra("ECR_TRANSACTION_REQUEST", Gson().toJson(transactionRequest))
                     putExtra("API_KEY", dummyCredential.apiKey)
                     putExtra("API_TOKEN", dummyCredential.apiToken)
             }

@@ -1,11 +1,9 @@
 package com.example.soepaytest.pojos
 
 import com.example.soepaytest.pojos.enums.PreferredInstrument
-import com.example.soepaytest.pojos.enums.TranType
-import android.icu.math.BigDecimal
-import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
+import java.math.BigDecimal
 
 @Parcelize
 class TransactionRequest(
